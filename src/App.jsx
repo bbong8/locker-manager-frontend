@@ -16,7 +16,9 @@ function App() {
   return (
     <S.Wrapper>
       <Popup />
+      <Layout />
     </S.Wrapper>
+
   );
 }
 

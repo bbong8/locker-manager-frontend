@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./style.jsx";
+import * as S from "./style.jsx";
 
 function Log() {
     
