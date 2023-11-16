@@ -1,12 +1,12 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {ContentControl, TitleControl} from "./control/PopupControl.jsx";
 
 
 import * as S from "./style.jsx";
 
 function Popup() {
-  const [type, setType] = useState('blockChain');
-
+  const [type, setType] = useState('passwordChange');
+  
   return (
       <S.PopupWrapper>
         <S.PopupTitle>
