@@ -23,6 +23,14 @@ const router = createBrowserRouter([
                 element: <Main />
             },
             {
+                path: "loading",
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <LazyLoading />
+                    </Suspense>
+                )
+            },
+            {
                 path: "auth",
                 element: <Auth />
             },
