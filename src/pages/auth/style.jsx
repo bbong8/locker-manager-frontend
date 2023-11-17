@@ -27,7 +27,9 @@ export const Title = styled.div`
   font-weight: bold;  
   font-size: 8vw;  
   color: #000000; 
+  border-bottom: 0.7vw solid #EC1C24;
 `;
+
 
 export const ContentWrapper = styled.div`
   width: 90%;
