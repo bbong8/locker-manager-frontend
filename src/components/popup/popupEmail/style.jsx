@@ -28,3 +28,12 @@ export const ButtonWrapper = styled.div`
   justify-content: space-around;
 `;
 
+export const WarningWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 15%;
+`;
+
