@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ButtonPopup = styled.button`
   display: flex;
-  width: 43%;
+  width: 92%;
   height: 100%;
   flex-direction: row;
   align-items: center;
@@ -18,8 +18,8 @@ export const ButtonPopup = styled.button`
     }
   }
   };
-  box-shadow: 0px 1.5vw 1.5vw 0px rgba(0, 0, 0, 0.25);
-  border-radius: 5vw;
+  box-shadow: 0px 1vw 1vw 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10vw;
   border: none;
 
   transition: transform 0.2s ease-in-out;
@@ -45,5 +45,5 @@ export const ButtonPopupText = styled.h1`
   };
   font-style: normal;
   font-weight: bold;
-  font-size: 4vw;
+  font-size: 5vw;
 `

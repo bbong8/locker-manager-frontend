@@ -23,6 +23,7 @@ function Auth(){
         <S.TitleWrapper>
           <S.Title>로그인</S.Title>
         </S.TitleWrapper>
+
       <S.ContentWrapper>
         <S.InputWrapper>
           <InputLogin placeholder="학번을 입력해주세요" type="text"/>
