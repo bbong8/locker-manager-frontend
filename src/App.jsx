@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from './components/layouts/footer';
-import Loading from './pages/loading/Loading.jsx';
+import Auth from './pages/auth/Auth.jsx';
 import * as S from'./style.jsx';
 
 const Layout = () => {
@@ -16,7 +16,7 @@ const Layout = () => {
 function App() {
   return (
     <S.Wrapper>
-      <Loading />
+      <Auth />
       <Layout />
     </S.Wrapper>
 
