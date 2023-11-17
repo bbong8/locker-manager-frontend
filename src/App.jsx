@@ -1,8 +1,9 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from './components/layouts/footer';
-import Popup from './components/popup/Popup';
+import Loading from './pages/loading/Loading.jsx';
 import * as S from'./style.jsx';
+
 const Layout = () => {
   return (
     <>
@@ -15,7 +16,7 @@ const Layout = () => {
 function App() {
   return (
     <S.Wrapper>
-      <Popup />
+      <Loading />
       <Layout />
     </S.Wrapper>
 
