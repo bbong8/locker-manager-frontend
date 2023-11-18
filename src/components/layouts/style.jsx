@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 5%;
 
+  background-color: #FFFFFF;
   position: fixed;
   bottom: 0;
   left: 0;
