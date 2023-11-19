@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import * as S from "./style.jsx";
 import InputLogin from "../../components/input/InputLogin/InputLogin.jsx";
 import ButtonLogin from "../../components/button/buttonLogin/ButtonLogin.jsx";
-import WarningPopup from "../../components/warning/WarningPopup.jsx";
+import WarningPopup from "../../components/warning/warningPopup/WarningPopup.jsx";
 
 function Auth(){
   const [isWarning, setIsWarning] = useState(false);
