@@ -33,7 +33,7 @@ function LockerInfo() {
     <S.Wrapper>
 
       <S.WarningWrapper>
-        <WarningInfo message={"사물함 정보"}/>
+        <WarningInfo message={"사물함"}/>
       </S.WarningWrapper>
 
       <S.LockerWrapper>

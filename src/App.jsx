@@ -4,7 +4,8 @@ import Footer from './components/layouts/Footer.jsx';
 import Main from './pages/main/Main.jsx';
 import Auth from './pages/auth/Auth.jsx';
 import Log from './pages/lockerLog/Log.jsx';
-import LockerInfo from './pages/lockerInfo/LockerInfo.jsx';
+import Locker from './pages/locker/Locker.jsx';
+import User from './pages/userInfo/User.jsx';
 import * as S from'./style.jsx';
 
 const Layout = () => {
@@ -18,8 +19,9 @@ const Layout = () => {
 
 function App() {
   return (
+
     <S.Wrapper>
-      <LockerInfo />
+      <User />
       <Layout />
     </S.Wrapper>
 
