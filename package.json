@@ -17,6 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "server": "GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider build --production && serve -s build -l 3000",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
