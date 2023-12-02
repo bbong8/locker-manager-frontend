@@ -63,3 +63,30 @@ export const ButtonWrapper = styled.div`
   align-items : center;
 `;
 
+export const Button = styled.button`
+  display: flex;
+  width: 43%;
+  height: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #EC1C24;
+  box-shadow: 0px 1.5vw 1.5vw 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5vw;
+  border: none;
+
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(0.9);
+  }
+
+`
+
+export const ButtonText = styled.h1`
+  font-family: Noto Sans KR;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 4vw;
+`
