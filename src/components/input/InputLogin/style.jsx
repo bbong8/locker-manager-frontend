@@ -11,7 +11,7 @@ export const InputPopup = styled.input`
   background-color: #FFFFFF;
   border-radius: 15vw;
   text-align: left;
-  padding-left: 20%;
+  padding-left: 15%;
   border: 0.5vw solid #EBEBEB;
   &:focus {
     border: 0.5vw solid #EC1C24;

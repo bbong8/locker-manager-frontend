@@ -43,7 +43,7 @@ export const ContentWrapper = styled.div`
 export const InputWrapper = styled.div`
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 90%;
   height: 50%;
   display: flex;
   flex-direction: column;
