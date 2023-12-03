@@ -12,7 +12,9 @@ export const InputPopup = styled.input`
   border-radius: 15vw;
   text-align: left;
   padding-left: 15%;
-  border: 0.5vw solid #EBEBEB;
+  border: 0.5vw solid ${props => 
+    props.isWarning ? "#EC1C24": "#EBEBEB"
+  };
   &:focus {
     border: 0.5vw solid #EC1C24;
   }

@@ -1,7 +1,10 @@
-import { useRouteError } from "react-router-dom";
-import * as styles from "./style.jsx";
+import React from "react";
 
-export default function NotFoundError() {
-    const error = useRouteError();
-    
-}
+
+export default function NotFound(){
+    return (
+        <div>
+            404 Not Found
+        </div>
+    );
+};
