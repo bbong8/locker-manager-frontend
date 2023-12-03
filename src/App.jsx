@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { UserContextProvider } from './context/context.jsx';
 import Footer from './components/layouts/Footer.jsx';
 import * as S from'./style.jsx';
 
@@ -12,14 +13,16 @@ const Layout = () => {
   );
 }
 
+
+
 function App() {
   return (
-
-    <S.Wrapper>
-      <Layout />
-    </S.Wrapper>
-
-  );
+    <UserContextProvider>
+      <S.Wrapper>
+        <Layout />
+      </S.Wrapper>
+      </UserContextProvider>
+  ); 
 }
 
 export default App;

@@ -1,26 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../context/context.jsx";
+
 import * as S from "./style.jsx";
 import WarningInfo from "../../components/warning/warningInfo/WarningInfo.jsx";
 
 
 function User(){
 
-  const user = {
-    name : "홍봉기",
-    id : "2023017368",
-    major : "컴퓨터학부",
-    phone : "01082554734",
-    email : "ghdqhdrl612@naver.com",
-    password : "82554734"
-  }
+  const { user } = useContext(UserContext);
+  
 
   const [isCheckedEmail, setIsCheckedEmail] = useState(true);
   const [isCheckedPhone, setIsCheckedPhone] = useState(true);
-  const [isCheckedAlarm, setIsCheckedAlarm] = useState(true);
+  const [isCheckedAlarm, setIsCheckedAlarm] = useState(user.is_push_alarm);
 
   const handleCheckedChangeEmail = () => {
 
     setIsCheckedEmail(!isCheckedEmail);
+    console.log(user);
 
   }
 
@@ -52,14 +49,14 @@ function User(){
         <S.InfoWrapper>
           <S.InfoTitle>- 학번</S.InfoTitle>
           <S.InfoInputWrapper>
-            <S.InvalidInfoInput disabled = {true} placeholder={user.id}></S.InvalidInfoInput>
+            <S.InvalidInfoInput disabled = {true} placeholder={user.school_number}></S.InvalidInfoInput>
           </S.InfoInputWrapper>
         </S.InfoWrapper>
 
         <S.InfoWrapper>
           <S.InfoTitle>- 학부/학과</S.InfoTitle>
           <S.InfoInputWrapper>
-            <S.InvalidInfoInput disabled = {true} placeholder={user.major}></S.InvalidInfoInput>
+            <S.InvalidInfoInput disabled = {true} placeholder={"컴퓨터학부"}></S.InvalidInfoInput>
           </S.InfoInputWrapper>
         </S.InfoWrapper>
 
@@ -70,7 +67,7 @@ function User(){
         <S.InfoWrapper>
           <S.InfoTitle>- 전화번호</S.InfoTitle>
           <S.InfoInputWrapper>
-            <S.validInfoInput disabled = {true} placeholder={user.phone}
+            <S.validInfoInput disabled = {true} placeholder={user.phone_number}
             ></S.validInfoInput>
             <S.changeButton
               onClick={handleCheckedChangePhone}
@@ -106,7 +103,7 @@ function User(){
         <S.InfoWrapper>
           <S.InfoTitle>- 비밀번호</S.InfoTitle>
           <S.InfoInputWrapper>
-            <S.validInfoInput disabled = {true} placeholder={user.password.replace(/./g, "*")} type="password"></S.validInfoInput>
+            <S.validInfoInput disabled = {true} placeholder={"**********"} type="password"></S.validInfoInput>
             <S.changeButton>변경</S.changeButton>
           </S.InfoInputWrapper>
         </S.InfoWrapper>
