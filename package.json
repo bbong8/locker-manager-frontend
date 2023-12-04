@@ -1,4 +1,5 @@
 {
+  "proxy": "https://he.princip.es",
   "name": "knu-locker",
   "version": "0.1.0",
   "private": true,

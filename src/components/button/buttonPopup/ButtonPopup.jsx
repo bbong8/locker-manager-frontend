@@ -1,10 +1,10 @@
 import React from "react";
 import * as S from "./style.jsx";
 
-function ButtonPopup({ title, buttonType }) {
+function ButtonPopup({ title, buttonRole }) {
   return (
-    <S.ButtonPopup buttonType = {buttonType}>
-      <S.ButtonPopupText buttonType = {buttonType}>{title}</S.ButtonPopupText>
+    <S.ButtonPopup buttonRole = {buttonRole}>
+      <S.ButtonPopupText buttonRole = {buttonRole}>{title}</S.ButtonPopupText>
     </S.ButtonPopup>
 
   );

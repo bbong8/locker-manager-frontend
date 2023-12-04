@@ -28,7 +28,7 @@ function PopupPassword(){
       <S.ButtonWrapper>
         <ButtonPopup 
           title={"비밀번호 변경"} 
-          buttonType={"important"} 
+          buttonRole={"important"} 
         >
         </ButtonPopup>
       </S.ButtonWrapper>

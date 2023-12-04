@@ -13,10 +13,9 @@ function Main(){
 
   useEffect(() => {
     if(!localStorage.getItem('token')){
-      alert("비정상적인 접근입니다.");
       navigate('/auth');
     }
-    if(user.name == undefined){
+    if(user.name === undefined){
       logout();
       navigate('/auth');
     }
@@ -57,9 +56,9 @@ function Main(){
       <S.ButtonWrapper>
         <S.Button
           onClick={() => {
-            { alert("로그아웃 되었습니다.") }
-            { navigate("/auth") }
-            { logout() }
+            alert("로그아웃 되었습니다.")
+            navigate("/auth") 
+            logout() 
           }
           }
         >

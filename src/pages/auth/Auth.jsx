@@ -112,7 +112,7 @@ function Auth(){
 
         <S.ButtonWrapper>
           <ButtonLogin 
-            title="로그인" buttonType="important"
+            title="로그인" buttonRole="important"
             onClick={() => {
               handleLogin(studentId, password);
             }}

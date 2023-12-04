@@ -27,13 +27,13 @@ function PopupEmailAuth(){
       <S.ButtonWrapper>
         <ButtonPopup 
           title={"인증하기"} 
-          buttonType={"important"} 
+          buttonRole={"important"} 
         >
         </ButtonPopup>
 
         <ButtonPopup 
           title={"다시하기"} 
-          buttonType={"normal"} 
+          buttonRole={"normal"} 
         >
         </ButtonPopup>
       </S.ButtonWrapper>

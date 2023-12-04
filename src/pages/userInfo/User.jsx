@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/context.jsx";
 import useAuth from "../../hooks/loginHook.jsx";
+import axios from "../../api/axios.js";
 import * as S from "./style.jsx";
 import WarningInfo from "../../components/warning/warningInfo/WarningInfo.jsx";
 import { useNavigate } from "react-router-dom";
@@ -18,20 +19,27 @@ function User(){
   const handleCheckedChangeEmail = () => {
 
     setIsCheckedEmail(!isCheckedEmail);
-    console.log(user);
 
   }
 
-  const handleCheckedChangePhone = () => {
-      
-      setIsCheckedPhone(!isCheckedPhone);
-  
+  const handleCheckedChangePhone = async() => {
+    setIsCheckedPhone(!isCheckedPhone)
   }
 
-  const handleCheckbox = () => {
-        
+  const handleCheckbox = async() => {
+    try{
+      const token = localStorage.getItem('token');
+      const response = await axios.put('/accounts/push-alarm',{
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      console.log(response);
       setIsCheckedAlarm(!isCheckedAlarm);
-  
+    }catch(error){
+      console.error(error);
+    }
+
   }
 
   useEffect(() => {
@@ -39,7 +47,7 @@ function User(){
       alert("비정상적인 접근입니다.");
       navigate('/auth');
     }
-    if(user.name == undefined){
+    if(user.name === undefined){
       logout();
       navigate('/auth');
     }

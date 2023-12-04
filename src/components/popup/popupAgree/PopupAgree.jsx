@@ -14,12 +14,12 @@ function PopupAgree(){
       <S.ButtonWrapper>
         <ButtonPopup 
           title={"동의"} 
-          buttonType={"important"} 
+          buttonRole={"important"} 
         >
         </ButtonPopup>
         <ButtonPopup 
           title={"다음에"} 
-          buttonType={"normal"} 
+          buttonRole={"normal"} 
         >
         </ButtonPopup>
       </S.ButtonWrapper>
