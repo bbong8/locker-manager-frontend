@@ -1,13 +1,13 @@
 import React from "react";
 import * as S from "./style.jsx";
 
-function ButtonPopup({ title, buttonType, onClick }) {
+function ButtonPopup({ title, buttonRole, onClick }) {
   return (
     <S.ButtonPopup 
-      buttonType = {buttonType}
+      buttonRole = {buttonRole}
       onClick={onClick}
       >
-      <S.ButtonPopupText buttonType = {buttonType}>{title}</S.ButtonPopupText>
+      <S.ButtonPopupText buttonRole = {buttonRole}>{title}</S.ButtonPopupText>
     </S.ButtonPopup>
 
   );

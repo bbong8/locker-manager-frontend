@@ -30,7 +30,7 @@ function PopupEmail(){
       <S.ButtonWrapper>
         <ButtonPopup 
           title={"인증번호 발송"}
-          buttonType={"important"}
+          buttonRole={"important"}
          >
          </ButtonPopup>
       </S.ButtonWrapper>

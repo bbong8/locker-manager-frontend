@@ -8,7 +8,7 @@ export const ButtonPopup = styled.button`
   align-items: center;
   justify-content: center;
   background-color: ${props =>{
-    switch (props.buttonType){
+    switch (props.buttonRole){
       case "important":
         return "#EC1C24";
       case "normal":
@@ -33,7 +33,7 @@ export const ButtonPopup = styled.button`
 export const ButtonPopupText = styled.h1`
   font-family: Noto Sans KR;
   color: ${props =>{
-    switch(props.buttonType){
+    switch(props.buttonRole){
       case "important":
         return "#FFFFFF";
       case "normal":

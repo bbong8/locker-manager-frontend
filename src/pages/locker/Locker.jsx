@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import useAuth from "../../hooks/loginHook.jsx";
 import { useNavigate } from "react-router-dom";
+import axios from "../../api/axios.js";
 import WarningInfo from "../../components/warning/warningInfo/WarningInfo.jsx";
 import * as S from "./style.jsx";
 
@@ -12,10 +12,25 @@ function LockerInfo() {
     locker_location : "IT 5호관 1층 학생회실 옆",
     locker_password : "4092"
   }
+
   const navigate = useNavigate();
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
+
+  const handleLockerInfo = async() => {
+    try{
+      const token = localStorage.getItem('token');
+      const response = await axios.get("/accounts", {
+        headers: {
+          'Authorization' : `Bearer ${token}`
+        }
+      });
+      console.log(response);
+    }catch(error){
+      console.log(error);
+    }
+  }
 
   const handleCheckboxChange1 = () => {
     setIsChecked1(!isChecked1);
@@ -29,6 +44,9 @@ function LockerInfo() {
 
 
   useEffect(() => {
+
+    handleLockerInfo();
+
     if(!localStorage.getItem('token')){
       alert("비정상적인 접근입니다.");
       navigate('/auth');

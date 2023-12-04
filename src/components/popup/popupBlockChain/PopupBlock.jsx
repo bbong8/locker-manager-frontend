@@ -18,7 +18,7 @@ function PopupBlock(){
       <S.ButtonWrapper>
         <ButtonPopup 
           title={"닫기"} 
-          buttonType={"important"} 
+          buttonRole={"important"} 
         >
         </ButtonPopup>
       </S.ButtonWrapper>
