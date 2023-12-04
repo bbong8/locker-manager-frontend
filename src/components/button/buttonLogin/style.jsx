@@ -5,6 +5,7 @@ export const ButtonPopup = styled.button`
   width: 92%;
   height: 100%;
   flex-direction: row;
+// flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
   background-color: ${props =>{

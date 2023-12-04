@@ -4,7 +4,7 @@ import React, { createContext, useState } from 'react';
 export const UserContext = createContext(null);
 
 export const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // 유저 데이터 저장용 state
+  const [user, setUser] = useState({}); // 유저 데이터 저장용 state
 
   const saveUser = (userData) => { // 유저 데이터 저장용 함수
     setUser(userData);

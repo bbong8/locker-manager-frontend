@@ -21,7 +21,7 @@ function App() {
       <S.Wrapper>
         <Layout />
       </S.Wrapper>
-      </UserContextProvider>
+    </UserContextProvider>
   ); 
 }
 

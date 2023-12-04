@@ -1,17 +1,31 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import * as S from "./style.jsx";
 import { useNavigate } from "react-router";
-import ButtonPopup from "../../components/button/buttonPopup/ButtonPopup.jsx";
+import useAuth from "../../hooks/loginHook.jsx";
+import { UserContext } from "../../context/context.jsx";
 import ButtonMain from "../../components/button/buttonMain/ButtonMain.jsx";
 
 function Main(){
 
   const navigate = useNavigate();
+  const {user} = useContext(UserContext);
+  const {logout} = useAuth();
+
+  useEffect(() => {
+    if(!localStorage.getItem('token')){
+      alert("비정상적인 접근입니다.");
+      navigate('/auth');
+    }
+    if(user.name == undefined){
+      logout();
+      navigate('/auth');
+    }
+  },[]);
 
   return(
     <S.Wrapper>
       <S.TitleWrapper>
-        <S.Title>홍봉기(2023017368)님</S.Title>
+        <S.Title>{user.name}({user.school_number})</S.Title>
         <S.Title style={{color : "#FF6363"}}>안녕하세요!</S.Title>
       </S.TitleWrapper>
 
@@ -43,8 +57,9 @@ function Main(){
       <S.ButtonWrapper>
         <S.Button
           onClick={() => {
-            { alert("로그아웃 되었습니다.")}
-            { navigate("/")}
+            { alert("로그아웃 되었습니다.") }
+            { navigate("/auth") }
+            { logout() }
           }
           }
         >
