@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import * as S from "./style.jsx";
+import React, { useState, useEffect } from "react";
+import useAuth from "../../hooks/loginHook.jsx";
+import { useNavigate } from "react-router-dom";
 import WarningInfo from "../../components/warning/warningInfo/WarningInfo.jsx";
+import * as S from "./style.jsx";
+
 
 function LockerInfo() {
   
@@ -9,7 +12,7 @@ function LockerInfo() {
     locker_location : "IT 5호관 1층 학생회실 옆",
     locker_password : "4092"
   }
-
+  const navigate = useNavigate();
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
@@ -25,7 +28,12 @@ function LockerInfo() {
   }
 
 
-  
+  useEffect(() => {
+    if(!localStorage.getItem('token')){
+      alert("비정상적인 접근입니다.");
+      navigate('/auth');
+    }
+  },[]);
 
 
 

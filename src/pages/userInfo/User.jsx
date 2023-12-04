@@ -1,15 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/context.jsx";
-
+import useAuth from "../../hooks/loginHook.jsx";
 import * as S from "./style.jsx";
 import WarningInfo from "../../components/warning/warningInfo/WarningInfo.jsx";
+import { useNavigate } from "react-router-dom";
 
 
 function User(){
 
   const { user } = useContext(UserContext);
-  
-
+  const { logout } = useAuth();
+  const navigate = useNavigate();
   const [isCheckedEmail, setIsCheckedEmail] = useState(true);
   const [isCheckedPhone, setIsCheckedPhone] = useState(true);
   const [isCheckedAlarm, setIsCheckedAlarm] = useState(user.is_push_alarm);
@@ -32,6 +33,17 @@ function User(){
       setIsCheckedAlarm(!isCheckedAlarm);
   
   }
+
+  useEffect(() => {
+    if(!localStorage.getItem('token')){
+      alert("비정상적인 접근입니다.");
+      navigate('/auth');
+    }
+    if(user.name == undefined){
+      logout();
+      navigate('/auth');
+    }
+  },[]);
 
   return(
     <S.Wrapper>
