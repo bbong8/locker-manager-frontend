@@ -1,41 +1,41 @@
 import React, { useState, useContext, useEffect } from "react";
-import { UserContext } from "../../context/context.jsx";
-import useAuth from "../../hooks/loginHook.jsx";
 import axios from "../../api/axios.js";
 import * as S from "./style.jsx";
 import WarningInfo from "../../components/warning/warningInfo/WarningInfo.jsx";
 import { useNavigate } from "react-router-dom";
-
+import useLoading from "../../hooks/loadingHook.jsx";
+import Loading from "../loading/Loading.jsx";
 
 function User(){
-
-  const { user } = useContext(UserContext);
-  const { logout } = useAuth();
+  const isLoading = useLoading(1500);
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const [isCheckedAlarm, setIsCheckedAlarm] = useState(false);
   const [isCheckedEmail, setIsCheckedEmail] = useState(true);
   const [isCheckedPhone, setIsCheckedPhone] = useState(true);
-  const [isCheckedAlarm, setIsCheckedAlarm] = useState(user.is_push_alarm);
 
   const handleCheckedChangeEmail = () => {
-
     setIsCheckedEmail(!isCheckedEmail);
 
   }
 
-  const handleCheckedChangePhone = async() => {
-    setIsCheckedPhone(!isCheckedPhone)
+  const handleCheckedChangePhone = () => {
+    setIsCheckedPhone(!isCheckedPhone);
   }
 
   const handleCheckbox = async() => {
     try{
       const token = localStorage.getItem('token');
-      const response = await axios.put('/accounts/push-alarm',{
+      const response = await axios.put('/accounts/push-alarm', {}, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
-      console.log(response);
+      let data = user;
+      data.is_push_alarm = response.data.response;
+      localStorage.setItem('user', JSON.stringify(data));
       setIsCheckedAlarm(!isCheckedAlarm);
+      console.log(response);
     }catch(error){
       console.error(error);
     }
@@ -47,11 +47,15 @@ function User(){
       alert("비정상적인 접근입니다.");
       navigate('/auth');
     }
-    if(user.name === undefined){
-      logout();
-      navigate('/auth');
-    }
+    setUser(JSON.parse(localStorage.getItem('user')));
+    setIsCheckedAlarm(JSON.parse(localStorage.getItem('user')).is_push_alarm);
   },[]);
+
+  if(isLoading){
+    return(
+      <Loading />
+    )
+  }
 
   return(
     <S.Wrapper>
@@ -89,10 +93,10 @@ function User(){
           <S.InfoInputWrapper>
             <S.validInfoInput disabled = {true} placeholder={user.phone_number}
             ></S.validInfoInput>
-            <S.changeButton
+            {/* <S.changeButton
               onClick={handleCheckedChangePhone}
               button = {isCheckedPhone}
-            >변경</S.changeButton>
+            >변경</S.changeButton> */}
           </S.InfoInputWrapper>
         </S.InfoWrapper>
 
@@ -101,16 +105,16 @@ function User(){
           <S.InfoInputWrapper>
             <S.validInfoInput disabled={true} placeholder={user.email}
             ></S.validInfoInput>
-            <S.changeButton
+            {/* <S.changeButton
               onClick={handleCheckedChangeEmail}
-            >변경</S.changeButton>
+            >변경</S.changeButton> */}
           </S.InfoInputWrapper>
         </S.InfoWrapper>
 
         <S.CheckboxWrapper>
           <S.Checkbox 
             type="checkbox"
-            checked={isCheckedAlarm}
+            checked={JSON.parse(localStorage.getItem('user')).is_push_alarm}
             onChange={handleCheckbox}
           />
           <S.CheckboxText
@@ -124,7 +128,7 @@ function User(){
           <S.InfoTitle>- 비밀번호</S.InfoTitle>
           <S.InfoInputWrapper>
             <S.validInfoInput disabled = {true} placeholder={"**********"} type="password"></S.validInfoInput>
-            <S.changeButton>변경</S.changeButton>
+            {/* <S.changeButton>변경</S.changeButton> */}
           </S.InfoInputWrapper>
         </S.InfoWrapper>
 

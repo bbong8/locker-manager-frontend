@@ -12,6 +12,18 @@ export const Wrapper = styled.div`
 
 `;
 
+export const BlurWrapper = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content : center;
+  align-items : center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+`
+
 export const TitleWrapper = styled.div`
   width : 100%;
   height : 25%;

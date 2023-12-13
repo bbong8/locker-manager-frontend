@@ -5,9 +5,19 @@ export const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-
-
 `;
+
+export const BlurWrapper = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content : center;
+  align-items : center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+`
 
 export const TitleWrapper = styled.div`
   position: fixed;
@@ -15,7 +25,7 @@ export const TitleWrapper = styled.div`
 
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 87%;
   height: 10vh;
   justify-content: flex-start;
   align-items: flex-end;

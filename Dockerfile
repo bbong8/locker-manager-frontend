@@ -9,4 +9,4 @@ RUN npm install --silent
 USER root
 RUN npm install react-scripts@3.0.1 -g --silent
 RUN npm install -g serve --save
-CMD ["npm", "server"]
+CMD ["npm", "run", "build"]

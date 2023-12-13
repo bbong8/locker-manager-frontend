@@ -79,7 +79,7 @@ export const InvalidInfoInput = styled.input`
 export const validInfoInput = styled.input`
   display: flex;
   flex-direction: row;
-  width: 70%;
+  width: 100%;
   height: 100%;
 
   font-size: 4vw;
