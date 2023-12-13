@@ -34,7 +34,7 @@ export const blockWalletContent = styled.p`
   height: 100%;
   text-align: center;
   color: #EC1C24;
-  font-size: 3vw;
+  font-size: 4vw;
 `;
 
 export const ButtonWrapper = styled.div`

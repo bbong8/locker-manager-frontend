@@ -1,6 +1,6 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, {useState,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../context/context.jsx";
+
 import useAuth from "../../hooks/loginHook.jsx"
 import axios from "../../api/axios.js";
 import * as S from "./style.jsx";
@@ -14,7 +14,6 @@ function Auth(){
   const [studentId, setStudentId] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { saveUser } = useContext(UserContext);
   const { login } = useAuth();
 
   const handleLogin = async(studentId, password) => {
@@ -25,14 +24,13 @@ function Auth(){
       });
 
       if (response.status === 200){
-        console.log(response);
-        saveUser(response.data.response.body);
+        localStorage.setItem('user', JSON.stringify(response.data.response.body));
         login(response.data.response.body.token.access_token);
         navigate('/');
-      }
-      else if (response.status === 403){
-        console.log('로그인 실패');
-        setIsWarning(true);
+        
+        if (response.data.response.body.is_first_login === true) {
+          alert("최초 로그인 감지됨.");
+        }
       }
     } catch(error) {
       console.log(error);

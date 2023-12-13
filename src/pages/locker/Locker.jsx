@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import useLoading from "../../hooks/loadingHook.jsx";
 import axios from "../../api/axios.js";
 import WarningInfo from "../../components/warning/warningInfo/WarningInfo.jsx";
+import Loading from "../loading/Loading.jsx"
 import * as S from "./style.jsx";
 
 
@@ -13,12 +15,16 @@ function LockerInfo() {
     locker_password : "4092"
   }
 
+  const isLoading = useLoading(1500);
   const navigate = useNavigate();
+  const [lockerLoc, setLockerLoc] = useState("");
+  const [lockerId, setLockerId] = useState("");
+  const [password, setPassword] = useState("");
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
 
-  const handleLockerInfo = async() => {
+  const getLockerInfo = async() => {
     try{
       const token = localStorage.getItem('token');
       const response = await axios.get("/accounts", {
@@ -26,7 +32,11 @@ function LockerInfo() {
           'Authorization' : `Bearer ${token}`
         }
       });
-      console.log(response);
+      setPassword(response.data.response.locker.locker_password);
+      if(response.data.response.locker.locker_location === "LOC_L"){
+        setLockerId("L-"+response.data.response.locker.locker_number);
+        setLockerLoc("IT 5호관 1층 학생회실 옆");
+      }
     }catch(error){
       console.log(error);
     }
@@ -42,19 +52,44 @@ function LockerInfo() {
     setIsChecked3(!isChecked3);
   }
 
+  const handleReport = async() => {
+    if (isChecked1 && isChecked2 && isChecked3) {
+      try{
+        const token = localStorage.getItem('token');
+        const response = await axios.put("/lockers/reports", {}, {
+          headers: {'Authorization': `Bearer ${token}`}
+        });
+  
+        if (response.status === 200){
+          alert("신고가 접수 되었습니다.");
+          handleCheckboxChange1();
+          handleCheckboxChange2();
+          handleCheckboxChange3();
+        }
+      } catch(error) {
+        alert("신고 접수를 실패했습니다.");
+        console.log(error);
+      }
+    } else {
+      alert("신고 접수를 위해 모든 약관에 동의해주세요.");
+    }
+  };
+
 
   useEffect(() => {
-
-    handleLockerInfo();
-
     if(!localStorage.getItem('token')){
       alert("비정상적인 접근입니다.");
       navigate('/auth');
     }
+    getLockerInfo();
+    
   },[]);
 
-
-
+  if(isLoading){
+    return(
+      <Loading />
+    )
+  }
   return(
     <S.Wrapper>
 
@@ -69,10 +104,10 @@ function LockerInfo() {
           <S.LockerInfoTitle>🔒 사물함 정보 조회 🔒</S.LockerInfoTitle>
           
           <S.LockerContentWrapper>
-            <S.LockerNumber>사물함 번호 : {e.locker_number}</S.LockerNumber>
-            <S.LockerLocation>사물함 위치 : {e.locker_location}</S.LockerLocation>
-            <S.LockerPassword>사물함 비밀번호 : {e.locker_password}</S.LockerPassword>
-            <S.PasswordButton>비밀번호 변경하기</S.PasswordButton>
+            <S.LockerNumber>사물함 번호 : {lockerId}</S.LockerNumber>
+            <S.LockerLocation>사물함 위치 : {lockerLoc}</S.LockerLocation>
+            <S.LockerPassword>사물함 비밀번호 : {password}</S.LockerPassword>
+            {/* <S.PasswordButton>비밀번호 변경하기</S.PasswordButton> */}
           </S.LockerContentWrapper>
           
         </S.LockerCardWrapper>
@@ -122,12 +157,7 @@ function LockerInfo() {
 
         <S.ReportButton
           onClick={() => {
-            if(isChecked1 && isChecked2 && isChecked3){
-              alert("신고가 접수되었습니다.");
-            }
-            else{
-              alert("신고 접수를 위해 모든 약관에 동의해주세요.");
-            }
+              handleReport();
           }}
         >
           사물함 고장 신고하기

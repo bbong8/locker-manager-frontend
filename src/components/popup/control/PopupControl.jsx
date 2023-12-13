@@ -6,9 +6,9 @@ import PopupPassword from "../popupPassword/PopupPassword.jsx";
 import PopupBlock from "../popupBlockChain/PopupBlock.jsx";
 
 
-const ContentControl = (type) => {
+const ContentControl = (e) => {
 
-  switch(type){
+  switch(e.type){
     case 'emailAgree':
       return <PopupAgree />;
 
@@ -22,16 +22,16 @@ const ContentControl = (type) => {
       return <PopupPassword />;
 
     case 'blockChain':
-      return <PopupBlock />;
+      return <PopupBlock log={e.log}/>;
 
     default:
       return null;
   }
 };
 
-const TitleControl = (type) => {
+const TitleControl = (e) => {
 
-  switch(type){
+  switch(e.type){
     case 'emailAgree':
       return '🔔 이메일 푸시 알림 동의 🔔';
 

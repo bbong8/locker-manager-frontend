@@ -1,5 +1,4 @@
 {
-  "proxy": "https://he.princip.es",
   "name": "knu-locker",
   "version": "0.1.0",
   "private": true,
@@ -8,6 +7,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.2",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.18.0",
@@ -18,8 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "server": "GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider build --production && serve -s build -l 3000",
+    "build": "GENERATE_SOURCEMAP=false react-scripts --openssl-legacy-provider build --production && serve -s build -l 3000",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

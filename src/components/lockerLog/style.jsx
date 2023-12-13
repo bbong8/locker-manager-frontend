@@ -38,7 +38,7 @@ export const OpenClose = styled.p`
   color: ${props =>{
     switch (props.boxType){
       case "open":
-        return "#FFA1A1";
+        return "#FFA1AA";
       case "close":
         return "#000000";
     }

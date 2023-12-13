@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import * as S from "./style.jsx";
-import ButtonPopup from "../../button/ButtonPopup.jsx";
-import InputPopup from "../../input/InputPopup.jsx";
-import WarningPopup from "../../warning/WarningPopup.jsx";
+import ButtonPopup from "../../button/buttonPopup/ButtonPopup.jsx";
+import InputPopup from "../../input/inputPopup/InputPopup.jsx";
+import WarningPopup from "../../warning/warningPopup/WarningPopup.jsx";
 
 function PopupPassword(){
 

@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import * as S from "./style.jsx";
-import ButtonPopup from "../../button/ButtonPopup.jsx";
-import InputPopup from "../../input/InputPopup.jsx";
+import ButtonPopup from "../../button/buttonPopup/ButtonPopup.jsx";
+import { FirstLoginContext } from "../../../pages/main/Main.jsx";
 
 function PopupAgree(){
+  const {setIsFirstLogin, handleCheckbox} = useContext(FirstLoginContext);
+
+  const handleModal = () => {
+    setIsFirstLogin(false);
+  };
+  
   return (
     <S.Wrapper>
 
@@ -14,12 +20,14 @@ function PopupAgree(){
       <S.ButtonWrapper>
         <ButtonPopup 
           title={"동의"} 
-          buttonRole={"important"} 
+          buttonRole={"important"}
+          onClick = {handleCheckbox}
         >
         </ButtonPopup>
         <ButtonPopup 
           title={"다음에"} 
           buttonRole={"normal"} 
+          onClick = {handleModal}
         >
         </ButtonPopup>
       </S.ButtonWrapper>
