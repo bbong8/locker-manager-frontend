@@ -8,3 +8,5 @@
 
 ## 3. 프로젝트 Repository
 ### [사물함 통합 관리 시스템](https://github.com/creative-engineering-design-gui)
+
+### 현재 서버가 닫혀있고, 로컬 환경의 상태에 따라 렌더링이 되지 않는 문제가 있습니다.
